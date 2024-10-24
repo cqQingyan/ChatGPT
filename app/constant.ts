@@ -281,13 +281,7 @@ export const DEFAULT_TTS_VOICES = [
 ];
 
 const openaiModels = [
-  "gpt-3.5-turbo",
-  "gpt-3.5-turbo-1106",
-  "gpt-3.5-turbo-0125",
   "gpt-4",
-  "gpt-4-0613",
-  "gpt-4-32k",
-  "gpt-4-32k-0613",
   "gpt-4-turbo",
   "gpt-4-turbo-preview",
   "gpt-4o",
@@ -298,23 +292,18 @@ const openaiModels = [
   "gpt-4o-mini-2024-07-18",
   "gpt-4-vision-preview",
   "gpt-4-turbo-2024-04-09",
-  "gpt-4-1106-preview",
-  "dall-e-3",
   "o1-mini",
   "o1-preview",
 ];
 
 const googleModels = [
   "gemini-1.0-pro",
-  "gemini-1.5-pro-latest",
-  "gemini-1.5-flash-latest",
+  "gemini-1.5-pro",
+  "gemini-1.5-flash",
   "gemini-pro-vision",
 ];
 
 const anthropicModels = [
-  "claude-instant-1.2",
-  "claude-2.0",
-  "claude-2.1",
   "claude-3-sonnet-20240229",
   "claude-3-opus-20240229",
   "claude-3-haiku-20240307",
@@ -322,17 +311,11 @@ const anthropicModels = [
 ];
 
 const baiduModels = [
-  "ernie-4.0-turbo-8k",
-  "ernie-4.0-8k",
-  "ernie-4.0-8k-preview",
-  "ernie-4.0-8k-preview-0518",
-  "ernie-4.0-8k-latest",
-  "ernie-3.5-8k",
-  "ernie-3.5-8k-0205",
-  "ernie-speed-128k",
-  "ernie-speed-8k",
-  "ernie-lite-8k",
-  "ernie-tiny-8k",
+  "ERNIE-4.0-8K",
+  "ERNIE-4.0-Turbo-8K",
+  "ERNIE-3.5-128K",
+  "ERNIE-3.5-8K",
+  "ERNIE-Speed-Pro-128K",
 ];
 
 const bytedanceModels = [
