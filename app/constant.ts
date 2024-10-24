@@ -104,17 +104,12 @@ export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
 export enum ServiceProvider {
   OpenAI = "OpenAI",
-  Azure = "Azure",
   Google = "Google",
-  Anthropic = "Anthropic",
   Baidu = "Baidu",
-  ByteDance = "ByteDance",
   Alibaba = "Alibaba",
   Tencent = "Tencent",
   Moonshot = "Moonshot",
-  Stability = "Stability",
-  Iflytek = "Iflytek",
-  XAI = "XAI",
+
 }
 
 // Google API safety settings, see https://ai.google.dev/gemini-api/docs/safety-settings
@@ -180,17 +175,20 @@ export const Baidu = {
   ExampleEndpoint: BAIDU_BASE_URL,
   ChatPath: (modelName: string) => {
     let endpoint = modelName;
-    if (modelName === "ernie-4.0-8k") {
+    if (modelName === "ERNIE-4.0-8K") {
       endpoint = "completions_pro";
     }
-    if (modelName === "ernie-4.0-8k-preview-0518") {
-      endpoint = "completions_adv_pro";
+    if (modelName === "ERNIE-4.0-Turbo-8K") {
+      endpoint = "ernie-4.0-turbo-8k";
     }
-    if (modelName === "ernie-3.5-8k") {
+    if (modelName === "ERNIE-3.5-128K") {
       endpoint = "completions";
     }
-    if (modelName === "ernie-speed-8k") {
-      endpoint = "ernie_speed";
+    if (modelName === "ERNIE-3.5-8K") {
+      endpoint = "completions";
+    }
+    if (modelName === "ERNIE-Speed-Pro-128K") {
+      endpoint = "ernie-speed-pro-128k";
     }
     return `rpc/2.0/ai_custom/v1/wenxinworkshop/chat/${endpoint}`;
   },
@@ -212,16 +210,6 @@ export const Tencent = {
 
 export const Moonshot = {
   ExampleEndpoint: MOONSHOT_BASE_URL,
-  ChatPath: "v1/chat/completions",
-};
-
-export const Iflytek = {
-  ExampleEndpoint: IFLYTEK_BASE_URL,
-  ChatPath: "v1/chat/completions",
-};
-
-export const XAI = {
-  ExampleEndpoint: XAI_BASE_URL,
   ChatPath: "v1/chat/completions",
 };
 
@@ -300,14 +288,6 @@ const googleModels = [
   "gemini-1.0-pro",
   "gemini-1.5-pro",
   "gemini-1.5-flash",
-  "gemini-pro-vision",
-];
-
-const anthropicModels = [
-  "claude-3-sonnet-20240229",
-  "claude-3-opus-20240229",
-  "claude-3-haiku-20240307",
-  "claude-3-5-sonnet-20240620",
 ];
 
 const baiduModels = [
@@ -316,15 +296,6 @@ const baiduModels = [
   "ERNIE-3.5-128K",
   "ERNIE-3.5-8K",
   "ERNIE-Speed-Pro-128K",
-];
-
-const bytedanceModels = [
-  "Doubao-lite-4k",
-  "Doubao-lite-32k",
-  "Doubao-lite-128k",
-  "Doubao-pro-4k",
-  "Doubao-pro-32k",
-  "Doubao-pro-128k",
 ];
 
 const alibabaModes = [
@@ -347,15 +318,12 @@ const tencentModels = [
   "hunyuan-vision",
 ];
 
-const moonshotModes = ["moonshot-v1-8k", "moonshot-v1-32k", "moonshot-v1-128k"];
-
-const iflytekModels = [
-  "general",
-  "generalv3",
-  "pro-128k",
-  "generalv3.5",
-  "4.0Ultra",
+const moonshotModes = [
+  "moonshot-v1-8k", 
+  "moonshot-v1-32k", 
+  "moonshot-v1-128k"
 ];
+
 
 const xAIModes = ["grok-beta"];
 
@@ -394,17 +362,6 @@ export const DEFAULT_MODELS = [
       sorted: 3,
     },
   })),
-  ...anthropicModels.map((name) => ({
-    name,
-    available: true,
-    sorted: seq++,
-    provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
-      sorted: 4,
-    },
-  })),
   ...baiduModels.map((name) => ({
     name,
     available: true,
@@ -414,17 +371,6 @@ export const DEFAULT_MODELS = [
       providerName: "Baidu",
       providerType: "baidu",
       sorted: 5,
-    },
-  })),
-  ...bytedanceModels.map((name) => ({
-    name,
-    available: true,
-    sorted: seq++,
-    provider: {
-      id: "bytedance",
-      providerName: "ByteDance",
-      providerType: "bytedance",
-      sorted: 6,
     },
   })),
   ...alibabaModes.map((name) => ({
@@ -458,28 +404,6 @@ export const DEFAULT_MODELS = [
       providerName: "Moonshot",
       providerType: "moonshot",
       sorted: 9,
-    },
-  })),
-  ...iflytekModels.map((name) => ({
-    name,
-    available: true,
-    sorted: seq++,
-    provider: {
-      id: "iflytek",
-      providerName: "Iflytek",
-      providerType: "iflytek",
-      sorted: 10,
-    },
-  })),
-  ...xAIModes.map((name) => ({
-    name,
-    available: true,
-    sorted: seq++,
-    provider: {
-      id: "xai",
-      providerName: "XAI",
-      providerType: "xai",
-      sorted: 11,
     },
   })),
 ] as const;
